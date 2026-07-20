@@ -1,0 +1,58 @@
+# Defence Bank (defence-bank)
+
+Defence Bank Limited is an Australian customer-owned (mutual) bank established in 1975 and headquartered in Melbourne, serving current and former Australian Defence Force personnel, Department of Defence employees, and their families as well as the broader community. As an APRA-regulated Authorised Deposit-taking Institution (ADI), it returns value to members rather than external shareholders. Under Australia's Consumer Data Right (CDR / Open Banking), Defence Bank is a data holder exposing a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/defence-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/defence-bank/refs/heads/main/apis.yml)
+
+## Tags
+
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- Mutual Bank
+- Product Reference Data
+
+## Timestamps
+
+- **Created:** 2026-07-20
+- **Modified:** 2026-07-20
+
+## APIs
+
+### Defence Bank CDR Product Reference Data API
+
+Public, unauthenticated Consumer Data Right (CDR) Product Reference Data API exposing Defence Bank's retail and business banking products under the standard Consumer Data Standards (CDS) path `/cds-au/v1/banking/products` and `/cds-au/v1/banking/products/{productId}`. Confirmed live at HTTP 200 with `x-v: 4` returning a `data.products` array (52 products across transaction accounts, savings accounts, term deposits, credit cards, home loans, offset accounts, overdrafts, and personal loans).
+
+- **Human URL:** [https://www.defencebank.com.au/tools-and-advice/open-banking/](https://www.defencebank.com.au/tools-and-advice/open-banking/)
+- **Base URL:** `https://product.defencebank.com.au/cds-au/v1`
+
+#### Tags
+
+- CDR
+- Open Banking
+- Product Reference Data
+- Banking Products
+- Australia
+
+#### Properties
+
+- [Documentation](https://www.defencebank.com.au/tools-and-advice/open-banking/)
+- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#introduction)
+- [OpenAPI](openapi/defence-bank-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+
+## Common Properties
+
+- [Website](https://www.defencebank.com.au/)
+- [Documentation](https://www.defencebank.com.au/tools-and-advice/open-banking/)
+- [Blog](https://www.defencebank.com.au/intel)
+- [Privacy Policy](https://www.defencebank.com.au/tools-and-advice/legal-and-compliance/privacy/)
+- [Support](https://www.defencebank.com.au/contact)
+- [LinkedIn](https://www.linkedin.com/company/defencebank)
+
+## Maintainers
+
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com

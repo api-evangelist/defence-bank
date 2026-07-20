@@ -1,0 +1,94 @@
+aid: defence-bank
+name: Defence Bank
+review:
+  question: Does Defence Bank expose a live, public CDR Product Reference Data API, and is there a broader proprietary developer portal?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+  cdrPrdConfirmed: true
+  developerPortal: false
+  specProvenance: cds-standard
+findings:
+  summary: |
+    Defence Bank Limited, an APRA-regulated Australian customer-owned (mutual)
+    ADI, participates in the Consumer Data Right (CDR / Open Banking) as a data
+    holder. Its ONLY public, unauthenticated API surface is the mandated Product
+    Reference Data (PRD) API. This was confirmed live: an unauthenticated GET to
+    https://product.defencebank.com.au/cds-au/v1/banking/products returned HTTP
+    200 with an x-v: 4 response header and a JSON body containing a data.products
+    array (meta.totalRecords = 52) spanning transaction accounts, savings
+    accounts, term deposits, credit cards, home loans, offset accounts,
+    overdrafts, and personal loans. The bank does NOT run a proprietary developer
+    portal, an Up-style personal-banking API, or a public GitHub organization
+    (https://github.com/defencebank returns 404). Open Banking is documented as a
+    subsection of the main marketing site at
+    /tools-and-advice/open-banking/, which publishes the Product and Product
+    Details endpoint URLs and points developers to the Consumer Data Standards.
+  authModel: |
+    The PRD (product) endpoints are public and require no authentication or
+    consent - only a CDS x-v version header (v4 accepted; v3 rejected with an
+    HTTP 406 UnsupportedVersion error indicating supported versions 4-5). All
+    other CDR banking data (accounts, transactions, payees, direct debits) is
+    consumer data that requires an Accredited Data Recipient (ADR) and the CDR
+    OAuth2 / OpenID Connect FAPI authorization + consent model; those endpoints
+    are not part of this bank's public, unauthenticated surface and are not
+    listed as accessible APIs.
+  specProvenanceNote: |
+    No bank-proprietary OpenAPI/Swagger contract is published by Defence Bank.
+    The harvested spec at openapi/defence-bank-cds-banking-products-openapi.yml
+    is the SHARED Data Standards Body (DSB) Consumer Data Standards "CDR Banking
+    API" OpenAPI 3.0.3, version 1.36.0, downloaded verbatim from
+    consumerdatastandardsaustralia.github.io. It is the standard to which Defence
+    Bank's PRD endpoints conform (it defines /banking/products and
+    /banking/products/{productId} among 16 banking paths); it is NOT a
+    Defence-Bank-specific contract. It is retained because it is the authoritative
+    machine-readable description of the endpoints this bank exposes.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://product.defencebank.com.au/cds-au/v1
+      documented: true
+      note: CDR Product Reference Data API. Confirmed HTTP 200, x-v 4, JSON data.products array (52 products).
+  endpointsConfirmed:
+    - GET https://product.defencebank.com.au/cds-au/v1/banking/products
+    - GET https://product.defencebank.com.au/cds-au/v1/banking/products/{productId}
+  httpProbes:
+    - url: https://product.defencebank.com.au/cds-au/v1/banking/products?page-size=5
+      requestHeader: 'x-v: 4'
+      status: 200
+      note: Returned data.products array; meta.totalRecords 52; response x-v header 4.
+    - url: https://product.defencebank.com.au/cds-au/v1/banking/products?page-size=1
+      requestHeader: 'x-v: 3'
+      status: 406
+      note: UnsupportedVersion (urn:au-cds:error:cds-all:Header/UnsupportedVersion); acceptable versions 4-5.
+    - url: https://api.defencebank.com.au/cds-au/v1/banking/products
+      status: 000
+      note: No response / host not serving CDR here. The live CDR host is product.defencebank.com.au, not api.defencebank.com.au.
+    - url: https://github.com/defencebank
+      status: 404
+      note: No public GitHub organization for the bank.
+    - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+      status: 200
+      note: Open Banking / developer information page; publishes the Product and Product Details endpoint URLs.
+sources:
+  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+    type: Documentation
+    note: Bank's Open Banking page listing the Product API (https://product.defencebank.com.au/cds-au/v1/banking/products) and Product Details API.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: APIReference
+    note: DSB Consumer Data Standards - the standard the PRD API conforms to.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/includes/swagger/cds_banking.json
+    type: OpenAPI
+    note: Source of the harvested CDR Banking API OpenAPI 3.0.3 v1.36.0 (shared CDS standard, converted verbatim to YAML).
+  - url: https://api.cdr.gov.au/cdr-register/v1/all/data-holders/brands/summary
+    type: APIReference
+    note: CDR Register Data Holder Brands Summary - authoritative discovery of data-holder public brand/endpoint details.
+actions:
+  openapiPath: openapi/defence-bank-cds-banking-products-openapi.yml
+  apisYmlUpdated: true
+  reason: |
+    Bootstrapped Defence Bank as a CDR data-holder provider profile. Listed the
+    single confirmed public API (the PRD) with its live base URL, and harvested
+    the shared DSB CDS Banking OpenAPI verbatim, clearly flagged as the standard
+    (not a proprietary contract). No developer portal, proprietary spec, or
+    GitHub organization exists to capture.
