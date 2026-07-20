@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/defence-bank-cds-banking-products-openapi.yml (x-scopes per operation)
+docs: https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes
+description: >-
+  CDR authorization scopes govern the authenticated consumer-data-sharing endpoints.
+  They are captured from the per-operation x-scopes extension in the OpenAPI plus the
+  Consumer Data Standards authorisation-scopes reference. The public Product Reference
+  Data endpoints require no scope (unauthenticated). Scopes are granted by the consumer
+  during CDR consent to an Accredited Data Recipient.
+schemes:
+- name: CDR-FAPI-OAuth2
+  source: Consumer Data Standards security profile
+  flows:
+  - flow: authorizationCode
+    profile: FAPI / OIDC hybrid
+scopes:
+- scope: bank:accounts.basic:read
+  description: Read basic account information (account list, basic account detail).
+  operations: [listBankingAccounts, getBankingAccountDetail, listBankingBalancesBulk, listBankingBalancesSpecificAccounts, getBankingBalance]
+- scope: bank:accounts.detail:read
+  description: Read detailed account information (account terms, features, and identifiers).
+  operations: [getBankingAccountDetail]
+- scope: bank:transactions:read
+  description: Read account transactions and transaction detail.
+  operations: [listBankingTransactions, getBankingTransactionDetail]
+- scope: bank:regular_payments:read
+  description: Read direct debits, scheduled payments, and instalment plans.
+  operations: [listDirectDebits, listDirectDebitsBulk, listDirectDebitsSpecificAccounts, listScheduledPayments, listScheduledPaymentsBulk, listScheduledPaymentsSpecificAccounts, listInstalmentPlans, listInstalmentPlansBulk]
+- scope: bank:payees:read
+  description: Read saved payees.
+  operations: [listBankingPayees, getBankingPayeeDetail]
+notes:
+  - Product Reference Data endpoints (listBankingProducts, getBankingProductDetail) are public and require no scope.
+  - CDR also defines the openid and (via the register) profile scopes for the OIDC layer; the bank:* scopes above are the data-cluster scopes declared in this spec.

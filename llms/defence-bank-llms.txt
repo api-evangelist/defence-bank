@@ -1,0 +1,33 @@
+# Defence Bank
+
+> Defence Bank Limited is an Australian customer-owned (mutual) bank established in 1975 and headquartered in Melbourne, serving current and former Australian Defence Force personnel, Department of Defence employees, their families, and the broader community. As an APRA-regulated Authorised Deposit-taking Institution (ADI) and a registered Consumer Data Right (CDR) data holder, Defence Bank exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards.
+
+## Overview
+
+- CDR role: data holder (Australian Consumer Data Right / Open Banking)
+- Public API surface: Product Reference Data (no authentication required)
+- Live base URL: https://product.defencebank.com.au/cds-au/v1 (send header `x-v: 4`)
+- Authenticated data-sharing endpoints (accounts, transactions, payees) require CDR FAPI OAuth2/OIDC + MTLS and are restricted to Accredited Data Recipients.
+
+## APIs
+
+- [Defence Bank CDR Product Reference Data API](https://www.defencebank.com.au/tools-and-advice/open-banking/): List and retrieve Defence Bank's retail and business banking products under the Consumer Data Standards.
+
+## Specs
+
+- [OpenAPI (CDR Banking API)](openapi/defence-bank-cds-banking-products-openapi.yml): Consumer Data Standards banking spec v1.36.0.
+- [Data model](data-model/defence-bank-data-model.yml): Product / account entity-relationship graph.
+- [Authentication profile](authentication/defence-bank-authentication.yml): public PRD vs CDR FAPI tiers.
+- [OAuth scopes](scopes/defence-bank-scopes.yml): CDR bank:* authorization scopes.
+- [Conventions](conventions/defence-bank-conventions.yml): x-v versioning, x-fapi-interaction-id tracing, page/page-size pagination, au-cds error envelope.
+- [Error catalog](errors/defence-bank-problem-types.yml): CDS ResponseErrorListV2 error codes.
+- [Lifecycle](lifecycle/defence-bank-lifecycle.yml): CDS header versioning and deprecation.
+- [Conformance](conformance/defence-bank-conformance.yml): CDR, FAPI, OAuth2/OIDC standards.
+- [MCP (candidate)](mcp/defence-bank-mcp.yml): candidate tools for the public PRD operations.
+
+## Docs
+
+- [Open Banking (CDR)](https://www.defencebank.com.au/tools-and-advice/open-banking/)
+- [Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/)
+- [Privacy](https://www.defencebank.com.au/tools-and-advice/legal-and-compliance/privacy/)
+- [Contact / Support](https://www.defencebank.com.au/contact)

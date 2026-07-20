@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+description: >-
+  Candidate MCP server surface derived from the publicly reachable Consumer Data
+  Standards Product Reference Data operations. Defence Bank publishes no official
+  hosted MCP server; these tools map one-to-one onto the two unauthenticated PRD
+  operations, which need no credentials and can be called directly against
+  https://product.defencebank.com.au/cds-au/v1 with header x-v: 4.
+server:
+  name: defence-bank-products
+  transport: http
+  url: null
+  base_url: https://product.defencebank.com.au/cds-au/v1
+  auth: none
+tools:
+- name: list_banking_products
+  description: List Defence Bank's publicly available banking products (transaction/savings accounts, term deposits, credit cards, home loans, offset accounts, overdrafts, personal loans). Supports product-category, brand, effective and updated-since filters plus page/page-size.
+  source_operation: openapi/defence-bank-cds-banking-products-openapi.yml#listBankingProducts
+- name: get_banking_product_detail
+  description: Retrieve the full detail for one product by productId, including bundles, features, constraints, eligibility, fees, deposit rates, and lending rates.
+  source_operation: openapi/defence-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+notes:
+  - The authenticated account/transaction/payee operations are omitted because they require CDR accreditation (ADR) and consumer consent, so they cannot be exposed by a self-serve MCP server.

@@ -1,0 +1,56 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#http-headers
+description: >-
+  Cross-cutting request/response semantics for the Consumer Data Standards banking
+  API. Derived from the OpenAPI (headers, parameters, response envelopes) and the
+  Consumer Data Standards HTTP conventions.
+authentication:
+  style: split-by-tier
+  detail: Public PRD endpoints are unauthenticated; consumer-data endpoints use CDR FAPI OAuth2/OIDC + MTLS.
+  see: authentication/defence-bank-authentication.yml
+versioning:
+  style: http-header
+  request: [x-v (requested version), x-min-v (minimum acceptable version)]
+  response: [x-v (version served)]
+  unsupported: 406 urn:au-cds:error:cds:header:unsupported-version
+  see: lifecycle/defence-bank-lifecycle.yml
+request_tracing:
+  header: x-fapi-interaction-id
+  behaviour: >-
+    Optional RFC4122 UUID supplied by the caller; the data holder MUST echo it back
+    in the x-fapi-interaction-id response header, or generate one if absent. Present
+    on every 2xx and 4xx response.
+  additional: x-fapi-auth-date, x-fapi-customer-ip-address (authenticated endpoints)
+pagination:
+  style: page-number
+  params:
+    page: 1-based page number (default 1)
+    page-size: records per page (default 25, max 1000)
+  response_links: LinksPaginated (self, first, prev, next, last)
+  response_meta: MetaPaginated (totalRecords, totalPages)
+  errors:
+    invalid_page: 422 urn:au-cds:error:cds:field:invalid (Invalid Page)
+    invalid_page_size: 400 (Invalid Page Size)
+idempotency:
+  supported: false
+  detail: >-
+    The published banking API is read-only (GET only); there is no Idempotency-Key
+    header or write-side idempotency contract. GET requests are inherently safe and
+    idempotent by HTTP semantics.
+error_envelope:
+  media_type: application/json
+  schema: ResponseErrorListV2
+  shape: '{ errors: [ { code: urn:au-cds:error:cds:*, title, detail, meta } ] }'
+  see: errors/defence-bank-problem-types.yml
+rate_limiting:
+  detail: >-
+    The CDS non-functional requirements define traffic thresholds and transactions-per-second
+    obligations per data-holder rather than per-caller HTTP rate-limit headers; no
+    X-RateLimit headers are declared in the spec.
+  see: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+content_type:
+  request: application/json
+  response: application/json
+  note: The au-cds ResponseErrorListV2 error envelope is JSON, not problem+json.

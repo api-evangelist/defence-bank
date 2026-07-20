@@ -1,0 +1,90 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+description: >-
+  Entity-relationship graph derived from the Consumer Data Standards banking schemas.
+  The publicly reachable surface is the Product domain (BankingProduct / BankingProductDetail);
+  the account domain is included for completeness (accessible only to Accredited Data
+  Recipients under CDR consent).
+id_fields:
+  productId: BankingProductId - ASCII string, unique within the data holder brand
+  accountId: ASCIIString - tokenised per consent (not a real account number)
+  transactionId: ASCIIString
+  payeeId: ASCIIString
+entities:
+- name: BankingProduct
+  schema: BankingProductV6
+  domain: product-reference-data
+  key: productId
+  public: true
+  fields: [productId, effectiveFrom, effectiveTo, lastUpdated, productCategory, name, description, brand, brandName, applicationUri, isTailored]
+- name: BankingProductDetail
+  schema: BankingProductDetailV7
+  domain: product-reference-data
+  key: productId
+  public: true
+  extends: BankingProductV6
+- name: BankingProductBundle
+  schema: BankingProductBundle
+  key: null
+- name: BankingProductFeature
+  schema: BankingProductFeatureV4
+- name: BankingProductConstraint
+  schema: BankingProductConstraintV3
+- name: BankingProductEligibility
+  schema: BankingProductEligibilityV2
+- name: BankingProductCardArt
+  schema: BankingProductCardArt
+- name: BankingAccount
+  schema: BankingAccountV3
+  domain: consumer-data-sharing
+  key: accountId
+  public: false
+- name: BankingTransaction
+  schema: BankingTransactionV2
+  domain: consumer-data-sharing
+  key: transactionId
+  public: false
+- name: BankingPayee
+  schema: BankingPayeeV2
+  domain: consumer-data-sharing
+  key: payeeId
+  public: false
+relationships:
+- from: BankingProductDetail
+  to: BankingProductBundle
+  type: has_many
+  via: bundles
+- from: BankingProductDetail
+  to: BankingProductFeature
+  type: has_many
+  via: features
+- from: BankingProductDetail
+  to: BankingProductConstraint
+  type: has_many
+  via: constraints
+- from: BankingProductDetail
+  to: BankingProductEligibility
+  type: has_many
+  via: eligibility
+- from: BankingProduct
+  to: BankingProductCardArt
+  type: has_many
+  via: cardArt
+- from: BankingProductBundle
+  to: BankingProduct
+  type: has_many
+  via: productIds
+- from: BankingTransaction
+  to: BankingAccount
+  type: belongs_to
+  via: accountId
+- from: BankingAccount
+  to: BankingTransaction
+  type: has_many
+  via: transactions
+- from: BankingPayee
+  to: BankingAccount
+  type: belongs_to
+  via: accountId

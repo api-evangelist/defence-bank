@@ -50,6 +50,8 @@ apis:
     across transaction accounts, savings accounts, term deposits, credit cards, home
     loans, offset accounts, overdrafts, and personal loans).
 common:
+- type: DomainSecurity
+  url: security/defence-bank-domain-security.yml
 - type: Website
   url: https://www.defencebank.com.au/
 - type: Documentation
@@ -62,6 +64,34 @@ common:
   url: https://www.defencebank.com.au/contact
 - type: LinkedIn
   url: https://www.linkedin.com/company/defencebank
+- type: GettingStarted
+  url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+- type: Authentication
+  url: authentication/defence-bank-authentication.yml
+- type: OAuthScopes
+  url: scopes/defence-bank-scopes.yml
+- type: Conventions
+  url: conventions/defence-bank-conventions.yml
+- type: ErrorCatalog
+  url: errors/defence-bank-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/defence-bank-lifecycle.yml
+- type: Deprecation
+  url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+- type: Conformance
+  url: conformance/defence-bank-conformance.yml
+- type: Compliance
+  url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+- type: DataModel
+  url: data-model/defence-bank-data-model.yml
+- type: MCPServer
+  url: mcp/defence-bank-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/defence-bank-llms.txt
+- type: Overlay
+  url: overlays/defence-bank-cds-banking-products-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Defence Bank CDR Banking API
+  version: 1.0.0
+extends: openapi/defence-bank-cds-banking-products-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: Defence Bank Limited
+    x-apievangelist-catalog: https://apis.io/defence-bank
+    x-cdr-role: data-holder
+    x-cdr-public-surface: product-reference-data
+- target: $.servers
+  update:
+  - description: Defence Bank live Product Reference Data (public, unauthenticated)
+    url: https://product.defencebank.com.au/cds-au/v1
+    x-verified-status: 200
+    x-verified-header: 'x-v: 4'
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-note: Live and unauthenticated at product.defencebank.com.au; returns a data.products array (52 products observed).
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-note: Live and unauthenticated; full product detail (features, constraints, eligibility, fees, rates).

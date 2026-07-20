@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+description: >-
+  Versioning and lifecycle follow the Consumer Data Standards (CDS). The CDR uses
+  per-endpoint HTTP header versioning (x-v requested / x-min-v minimum acceptable),
+  not URI or media-type versioning. Version negotiation, deprecation, obsolescence
+  and Future Dated Obligations (FDOs) are governed centrally by the Data Standards
+  Body maintenance iteration process; data holders such as Defence Bank must support
+  the mandated endpoint versions on the standards' obligation dates.
+versioning:
+  scheme: http-header
+  request_headers: [x-v, x-min-v]
+  response_headers: [x-v]
+  negotiation: >-
+    The endpoint responds with the highest supported version between x-min-v and x-v.
+    If no requested version is supported, 406 Unsupported Version is returned.
+  endpoint_versions:
+    listBankingProducts: '4'
+    getBankingProductDetail: '7'
+    listBankingAccounts: '3'
+    getBankingAccountDetail: '5'
+    listBankingTransactions: '2'
+  base_standard_version: 1.36.0
+deprecation:
+  policy: >-
+    CDS endpoint versions are deprecated and eventually obsoleted through the DSB
+    standards-maintenance change-control process; obligation dates (Future Dated
+    Obligations) give data holders a lead time before a new version becomes mandatory
+    and an older version may be retired.
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  mechanism: endpoint version deprecation via x-v negotiation (older x-v values eventually unsupported -> 406)
+  product_deprecation: >-
+    BankingProduct carries effectiveTo and lastUpdated to signal managed product
+    retirement in the Product Reference Data feed.
+sla:
+  availability_standard: >-
+    CDS non-functional requirements set data-holder availability, performance (TPS)
+    and traffic-threshold obligations; there is no separate public Defence Bank SLA page.
+  url: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+status_page: null
+deprecated_operations: []

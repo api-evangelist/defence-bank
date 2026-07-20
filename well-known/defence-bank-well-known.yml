@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of Defence Bank hosts
+description: >-
+  Probe of the /.well-known/ discovery surface on Defence Bank's API and web hosts.
+  No discovery documents were served: the product (PRD) host returns 403 (WAF) for
+  all /.well-known/ paths, and the www host returns 404. Absence is valid, recorded
+  data. The CDR OIDC discovery document for the authenticated data-sharing endpoints
+  lives on Defence Bank's separate authorization-server host published via the CDR
+  Register, not on these hosts.
+hosts:
+- host: https://product.defencebank.com.au
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+- host: https://www.defencebank.com.au
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+documents_saved: []

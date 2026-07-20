@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#error-codes
+format: au-cds
+description: >-
+  Error responses follow the Consumer Data Standards (CDS) ResponseErrorListV2
+  envelope (an "errors" array of objects with code / title / detail / meta),
+  returned as application/json. Error "code" values are CDS URNs of the form
+  urn:au-cds:error:cds:<class>:<name>. Titles/anchors below are taken verbatim
+  from the OpenAPI response descriptions; the URN codes are the standardised CDS
+  values documented in the Consumer Data Standards error code reference.
+envelope:
+  media_type: application/json
+  schema: ResponseErrorListV2
+  shape:
+    errors:
+    - code: urn:au-cds:error:cds:<class>:<name>
+      title: Human readable title
+      detail: Additional detail
+      meta: {}
+problems:
+- status: 400
+  code: urn:au-cds:error:cds:field:invalid
+  title: Invalid Field
+  anchor: error-400-field-invalid
+- status: 400
+  code: urn:au-cds:error:cds:field:missing
+  title: Missing Required Field
+  anchor: error-400-field-missing
+- status: 400
+  code: urn:au-cds:error:cds:header:missing
+  title: Missing Required Header
+  anchor: error-400-header-missing
+- status: 400
+  code: urn:au-cds:error:cds:header:invalid-version
+  title: Invalid Version
+  anchor: error-400-header-invalid-version
+- status: 400
+  code: urn:au-cds:error:cds:field:invalid
+  title: Invalid Page Size
+  anchor: error-400-field-invalid-page-size
+- status: 404
+  code: urn:au-cds:error:cds:resource:not-found
+  title: Resource Not Found
+  anchor: error-404-resource-not-found
+  applies_to: [getBankingProductDetail, getBankingAccountDetail, getBankingBalance, getBankingTransactionDetail, getBankingPayeeDetail]
+- status: 406
+  code: urn:au-cds:error:cds:header:unsupported-version
+  title: Unsupported Version
+  anchor: error-406-header-unsupported-version
+- status: 422
+  code: urn:au-cds:error:cds:field:invalid
+  title: Invalid Page
+  anchor: error-422-field-invalid-page
+notes:
+  - Only the Product Reference Data endpoints (/banking/products and /banking/products/{productId})
+    are publicly reachable at product.defencebank.com.au; the 4xx set above is the CDS-mandated
+    minimum every data holder endpoint must support.
+  - The CDS error envelope is not RFC 9457 problem+json; it is the au-cds ResponseErrorListV2 list shape.

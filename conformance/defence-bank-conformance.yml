@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://www.defencebank.com.au/tools-and-advice/open-banking/
+reference: https://consumerdatastandardsaustralia.github.io/standards/
+description: >-
+  Defence Bank Limited is a registered Consumer Data Right (CDR) data holder under
+  Australia's Competition and Consumer (Consumer Data Right) Rules, regulated by APRA
+  as an Authorised Deposit-taking Institution (ADI). Its Product Reference Data (PRD)
+  API conforms to the Data Standards Body (DSB) Consumer Data Standards for the banking
+  sector. The authenticated consumer-data-sharing endpoints (accounts, balances,
+  transactions, direct debits, scheduled payments, payees) additionally require the
+  CDR FAPI security profile (OAuth2 / OIDC / MTLS) and are only accessible to
+  Accredited Data Recipients (ADRs).
+standards:
+- id: cdr-consumer-data-standards
+  name: Consumer Data Standards (Banking)
+  conforms: true
+  evidence: OpenAPI title "CDR Banking API" v1.36.0 authored by the Data Standards Body; live PRD at product.defencebank.com.au/cds-au/v1 returns 200 with x-v 4.
+- id: cdr-register
+  name: CDR Register (data holder registration)
+  conforms: true
+  evidence: Defence Bank is a listed CDR data holder / ADI; open banking documented at defencebank.com.au/tools-and-advice/open-banking.
+- id: fapi-1.0
+  name: Financial-grade API security profile (FAPI)
+  conforms: true
+  evidence: CDS mandates the FAPI profile (MTLS + OIDC hybrid, x-fapi-interaction-id / x-fapi-auth-date headers present in spec) for authenticated data-sharing endpoints.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: true
+  evidence: CDR authorization model; per-operation x-scopes (bank:accounts.basic:read, bank:accounts.detail:read, bank:transactions:read, bank:regular_payments:read, bank:payees:read).
+- id: oidc
+  name: OpenID Connect
+  conforms: true
+  evidence: CDR uses OIDC hybrid flow for consumer authorization and consent.
+- id: cds-version-negotiation
+  name: CDS HTTP version negotiation (x-v / x-min-v)
+  conforms: true
+  evidence: All endpoints declare x-v request/response and x-min-v request headers with per-endpoint x-version.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: Errors use the au-cds ResponseErrorListV2 envelope (application/json), not application/problem+json.
+- id: cursor-pagination
+  name: Page-based pagination
+  conforms: true
+  evidence: page / page-size query params with LinksPaginated (first/prev/next/last) and MetaPaginated (totalRecords/totalPages).
+compliance:
+  program: Consumer Data Right (CDR)
+  regulator: APRA (ADI) + ACCC / OAIC (CDR)
+  url: https://www.defencebank.com.au/tools-and-advice/open-banking/

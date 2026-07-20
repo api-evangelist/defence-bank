@@ -1,0 +1,7 @@
+generated: '2026-07-20'
+method: generated
+skills:
+- file: defence-bank-list-banking-products.md
+  name: List and inspect Defence Bank banking products
+  api: openapi/defence-bank-cds-banking-products-openapi.yml
+  operations: [listBankingProducts, getBankingProductDetail]

@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/defence-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+description: >-
+  The Consumer Data Standards banking spec published for Defence Bank declares no
+  inline OpenAPI securitySchemes, because authentication in the CDR is split by
+  endpoint class. This profile is captured from the CDS security profile and the
+  provider's open banking documentation.
+summary:
+  types: [none, oauth2, openIdConnect, mutualTLS]
+  api_key_in: []
+  oauth2_flows: [authorizationCode-hybrid]
+tiers:
+- tier: product-reference-data
+  auth: none
+  description: >-
+    The Product Reference Data (PRD) endpoints (/banking/products and
+    /banking/products/{productId}) are public and unauthenticated. Confirmed live:
+    GET https://product.defencebank.com.au/cds-au/v1/banking/products with header
+    x-v: 4 returns HTTP 200. No credentials, API key, or token are required.
+  operations: [listBankingProducts, getBankingProductDetail]
+- tier: consumer-data-sharing
+  auth: cdr-fapi
+  description: >-
+    All account/transaction/balance/direct-debit/scheduled-payment/payee endpoints
+    require the CDR FAPI security profile: OAuth2 authorization-code (OIDC hybrid)
+    with the consumer's consent, mutual-TLS-bound access tokens, request-object
+    signing, and the x-fapi-interaction-id / x-fapi-auth-date headers. Only
+    Accredited Data Recipients (ADRs) registered on the CDR Register can obtain
+    tokens. Access is scoped by CDR authorization scopes (see scopes/).
+  scopes: [bank:accounts.basic:read, bank:accounts.detail:read, bank:transactions:read, bank:regular_payments:read, bank:payees:read]
+schemes:
+- name: CDR-FAPI-OAuth2
+  type: oauth2
+  scheme: authorizationCode
+  profile: FAPI (MTLS-bound tokens, OIDC hybrid, PAR)
+  applies_to: consumer-data-sharing endpoints
+  sources: [Consumer Data Standards security profile]
+- name: MTLS
+  type: mutualTLS
+  applies_to: consumer-data-sharing endpoints (token binding + holder-of-key)
+  sources: [Consumer Data Standards security profile]
