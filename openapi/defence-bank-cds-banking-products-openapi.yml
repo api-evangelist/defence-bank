@@ -1,3 +1,11 @@
+# PROVENANCE: This is the SHARED DSB Consumer Data Standards "CDR Banking API" v1.36.0
+# (cds_banking), harvested verbatim from the Data Standards Body
+# (https://consumerdatastandardsaustralia.github.io/standards). It is NOT Defence
+# Bank-proprietary — every AU Authorised Deposit-taking Institution implements this
+# standardized surface. Defence Bank hosts it at https://product.defencebank.com.au/cds-au/v1
+# (Product Reference Data confirmed live HTTP 200, x-v 4, 2026-07-21). Full 16 paths:
+# products (2, PUBLIC/unauthenticated) + accounts/balances/transactions/direct-debits/
+# scheduled-payments/payees (consumer-authorized via the CDR ADR + OAuth2/OIDC FAPI model).
 openapi: 3.0.3
 info:
   contact:
