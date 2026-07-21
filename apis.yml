@@ -151,6 +151,8 @@ apis:
     (ADR) and the customer''s consent via the OAuth2/OIDC FAPI CDR authorization model
     — these endpoints are not open/unauthenticated.'
 common:
+- type: AgenticAccess
+  url: agentic-access/defence-bank-agentic-access.yml
 - type: DomainSecurity
   url: security/defence-bank-domain-security.yml
 - type: Website
