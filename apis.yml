@@ -11,7 +11,19 @@ description: Defence Bank Limited is an Australian customer-owned (mutual) bank 
   exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the
   DSB Consumer Data Standards; deeper consumer-data sharing requires an accredited data
   recipient and the OAuth2/OIDC FAPI CDR authorization model.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/defence-bank.png
 tags:
 - Financial
 - Banks
@@ -25,131 +37,104 @@ created: '2026-07-20'
 modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
-- aid: defence-bank:defence-bank-cdr-product-reference-data-api
-  name: Defence Bank CDR Product Reference Data API
-  tags:
-  - CDR
-  - Open Banking
-  - Product Reference Data
-  - Banking Products
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: defence-bank:defence-bank-banking-account-balances-api
+  name: Defence Bank Banking Account Balances API
+  description: Banking Account Balance endpoints
   humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
   baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
-  properties:
-  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
-    type: APIReference
-  - url: openapi/defence-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: 'PUBLIC / unauthenticated Consumer Data Right (CDR) Product Reference
-    Data API exposing Defence Bank''s retail and business banking products under the
-    shared DSB Consumer Data Standards (CDS) Banking API v1.36.0 — paths /cds-au/v1/banking/products
-    and /cds-au/v1/banking/products/{productId}. No consumer consent or CDR ADR accreditation
-    is required. Confirmed live at HTTP 200 with x-v 4 (probed 2026-07-21) returning
-    a data.products array (52 products across transaction accounts, savings accounts,
-    term deposits, credit cards, home loans, offset accounts, overdrafts, and personal
-    loans).'
-- aid: defence-bank:defence-bank-cdr-accounts-balances-api
-  name: Defence Bank CDR Accounts & Balances API
   tags:
-  - CDR
-  - Open Banking
-  - Accounts
-  - Balances
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
-  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Balances
   properties:
-  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
-    type: APIReference
-  - url: openapi/defence-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: 'CONSUMER-AUTHORIZED Consumer Data Right (CDR) Accounts and Balances
-    API under the shared DSB Consumer Data Standards Banking API v1.36.0. Covers Get
-    Accounts (/banking/accounts), Get Bulk Balances (/banking/accounts/balances),
-    Get Account Balance (/banking/accounts/{accountId}/balance) and Get Account Detail
-    (/banking/accounts/{accountId}). Unlike Product Reference Data, these endpoints
-    require an Accredited Data Recipient (ADR) and the customer''s consent via the
-    OAuth2/OIDC FAPI CDR authorization model — they are not open/unauthenticated.'
-- aid: defence-bank:defence-bank-cdr-transactions-api
-  name: Defence Bank CDR Transactions API
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-account-direct-debits-api
+  name: Defence Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Transactions
-  - Accounts
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
-  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Direct Debits
   properties:
-  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
-    type: APIReference
-  - url: openapi/defence-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: 'CONSUMER-AUTHORIZED Consumer Data Right (CDR) Transactions API under
-    the shared DSB Consumer Data Standards Banking API v1.36.0. Covers Get Transactions
-    For Account (/banking/accounts/{accountId}/transactions) and Get Transaction Detail
-    (/banking/accounts/{accountId}/transactions/{transactionId}), supporting date,
-    amount and text filtering. Access requires an Accredited Data Recipient (ADR)
-    and the customer''s consent via the OAuth2/OIDC FAPI CDR authorization model —
-    these endpoints are not open/unauthenticated.'
-- aid: defence-bank:defence-bank-cdr-direct-debits-scheduled-payments-api
-  name: Defence Bank CDR Direct Debits & Scheduled Payments API
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-account-scheduled-payments-api
+  name: Defence Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Direct Debits
-  - Scheduled Payments
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
-  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Scheduled Payments
   properties:
-  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
-    type: APIReference
-  - url: openapi/defence-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: 'CONSUMER-AUTHORIZED Consumer Data Right (CDR) Direct Debits & Scheduled
-    Payments API under the shared DSB Consumer Data Standards Banking API v1.36.0.
-    Covers Get Direct Debits For Account and bulk Get Direct Debits (/banking/accounts/{accountId}/direct-debits,
-    /banking/accounts/direct-debits) plus Get Scheduled Payments For Account and bulk
-    Get Scheduled Payments (/banking/accounts/{accountId}/payments/scheduled, /banking/payments/scheduled).
-    Access requires an Accredited Data Recipient (ADR) and the customer''s consent
-    via the OAuth2/OIDC FAPI CDR authorization model — not open/unauthenticated.'
-- aid: defence-bank:defence-bank-cdr-payees-api
-  name: Defence Bank CDR Payees API
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-account-transactions-api
+  name: Defence Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Payees
-  - Accounts
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
-  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/payees
+  - Banking Account Transactions
   properties:
-  - url: https://www.defencebank.com.au/tools-and-advice/open-banking/
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
-    type: APIReference
-  - url: openapi/defence-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: 'CONSUMER-AUTHORIZED Consumer Data Right (CDR) Payees API under the
-    shared DSB Consumer Data Standards Banking API v1.36.0. Covers Get Payees (/banking/payees)
-    and Get Payee Detail (/banking/payees/{payeeId}), returning the member''s saved
-    domestic, biller and international payees. Access requires an Accredited Data Recipient
-    (ADR) and the customer''s consent via the OAuth2/OIDC FAPI CDR authorization model
-    — these endpoints are not open/unauthenticated.'
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-accounts-api
+  name: Defence Bank Banking Accounts API
+  description: Banking Account endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-payees-api
+  name: Defence Bank Banking Payees API
+  description: Banking Payee endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Payees
+  properties:
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
+- aid: defence-bank:defence-bank-banking-products-api
+  name: Defence Bank Banking Products API
+  description: Banking Product endpoints
+  humanURL: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  baseURL: https://product.defencebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Products
+  properties:
+  - type: OpenAPI
+    url: openapi/defence-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://www.defencebank.com.au/tools-and-advice/open-banking/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
 common:
 - type: AgenticAccess
   url: agentic-access/defence-bank-agentic-access.yml
