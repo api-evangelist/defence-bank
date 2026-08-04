@@ -1,0 +1,14 @@
+{
+  "repo": "defence-bank",
+  "feeds": [
+    {
+      "source": "https://www.defencebank.com.au/tools-and-advice/open-banking/",
+      "feed_url": "https://www.defencebank.com.au/tools-and-advice/open-banking/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-01T15:49:00Z"
+}

@@ -1,0 +1,26 @@
+{
+  "provider": "defence-bank",
+  "sources": [
+    "defence-bank-banking-account-balances-api-openapi.yml",
+    "defence-bank-banking-account-direct-debits-api-openapi.yml",
+    "defence-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "defence-bank-banking-account-transactions-api-openapi.yml",
+    "defence-bank-banking-accounts-api-openapi.yml",
+    "defence-bank-banking-payees-api-openapi.yml",
+    "defence-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "defence-bank-banking-account-balances-api-openapi.yml",
+    "defence-bank-banking-account-direct-debits-api-openapi.yml",
+    "defence-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "defence-bank-banking-account-transactions-api-openapi.yml",
+    "defence-bank-banking-accounts-api-openapi.yml",
+    "defence-bank-banking-payees-api-openapi.yml",
+    "defence-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
