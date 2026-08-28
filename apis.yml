@@ -11,6 +11,17 @@ description: Defence Bank Limited is an Australian customer-owned (mutual) bank 
   exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the
   DSB Consumer Data Standards; deeper consumer-data sharing requires an accredited data
   recipient and the OAuth2/OIDC FAPI CDR authorization model.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
