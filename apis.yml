@@ -147,6 +147,9 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#introduction
 common:
+- type: CapabilityMap
+  url: capabilities/defence-bank-capability-edges.yml
+  name: Defence Bank Business Capability Map
 - type: AgenticAccess
   url: agentic-access/defence-bank-agentic-access.yml
 - type: DomainSecurity
