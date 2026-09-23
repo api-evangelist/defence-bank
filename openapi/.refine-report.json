@@ -1,13 +1,7 @@
 {
   "provider": "defence-bank",
   "sources": [
-    "defence-bank-banking-account-balances-api-openapi.yml",
-    "defence-bank-banking-account-direct-debits-api-openapi.yml",
-    "defence-bank-banking-account-scheduled-payments-api-openapi.yml",
-    "defence-bank-banking-account-transactions-api-openapi.yml",
-    "defence-bank-banking-accounts-api-openapi.yml",
-    "defence-bank-banking-payees-api-openapi.yml",
-    "defence-bank-banking-products-api-openapi.yml"
+    "_original/defence-bank-cds-banking-products-openapi.yml"
   ],
   "outputs": [
     "defence-bank-banking-account-balances-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "defence-bank-cds-banking-products-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "defence-bank-banking-account-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-account-direct-debits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-account-scheduled-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-account-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-payees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "defence-bank-banking-products-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
