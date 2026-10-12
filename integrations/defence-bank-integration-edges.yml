@@ -1,0 +1,34 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/defence-bank/integrations
+- https://n8n.io/integrations/defence-bank/
+- https://composio.dev/toolkits/defence-bank
+- https://monid.ai/tools/defence-bank
+checked:
+- https://api.cdr.gov.au/cdr-register/v1/all/data-holders/brands/summary
+- https://composio.dev/toolkits/defence-bank
+- https://monid.ai/tools/defence-bank
+- https://n8n.io/integrations/defence-bank/
+- https://zapier.com/apps/defence-bank/integrations
+summary: null
+marketplace_apps: []
+edges:
+- partner_name: Consumer Data Right
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://api.cdr.gov.au/cdr-register/v1/all/data-holders/brands/summary
+  contract_reference:
+    register: CDR Register (Australia, ACCC)
+    spec_file: null
+    role: data-holder
+    registered_name: Defence Bank
+    register_id: 1a74d48b-7e9e-eb11-a821-000d3a884a20
+    matched_domain: defencebank.com.au
+    api_families: null
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
+templates: []
