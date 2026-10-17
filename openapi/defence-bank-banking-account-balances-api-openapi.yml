@@ -424,6 +424,38 @@ components:
       type: object
       x-conditional:
       - meta
+    Meta:
+      type: object
+    LinksPaginated:
+      properties:
+        self:
+          description: Fully qualified link that generated the current response document.
+          type: string
+          x-cds-type: URIString
+        first:
+          description: URI to the first page of this set. Mandatory if this response is not the first page.
+          type: string
+          x-cds-type: URIString
+        prev:
+          description: URI to the previous page of this set. Mandatory if this response is not the first page.
+          type: string
+          x-cds-type: URIString
+        next:
+          description: URI to the next page of this set. Mandatory if this response is not the last page.
+          type: string
+          x-cds-type: URIString
+        last:
+          description: URI to the last page of this set. Mandatory if this response is not the last page.
+          type: string
+          x-cds-type: URIString
+      required:
+      - self
+      type: object
+      x-conditional:
+      - prev
+      - next
+      - first
+      - last
     BankingBalancePurse:
       properties:
         amount:
@@ -436,88 +468,6 @@ components:
           x-cds-type: CurrencyString
       required:
       - amount
-      type: object
-    ResponseBankingAccountsBalanceList_data:
-      properties:
-        balances:
-          description: The list of balances returned.
-          items:
-            $ref: '#/components/schemas/BankingBalance'
-          type: array
-      required:
-      - balances
-      type: object
-    ResponseErrorListV2:
-      properties:
-        errors:
-          description: List of errors.
-          items:
-            $ref: '#/components/schemas/ErrorV2'
-          type: array
-      required:
-      - errors
-      type: object
-    RequestAccountIdListV1_data:
-      properties:
-        accountIds:
-          description: Array of _accountId_ values to obtain data for.
-          items:
-            $ref: '#/components/schemas/BankingAccountId'
-          type: array
-      required:
-      - accountIds
-      type: object
-    ResponseBankingAccountsBalanceList:
-      properties:
-        data:
-          $ref: '#/components/schemas/ResponseBankingAccountsBalanceList_data'
-        links:
-          $ref: '#/components/schemas/LinksPaginated'
-        meta:
-          $ref: '#/components/schemas/MetaPaginated'
-      required:
-      - data
-      - links
-      - meta
-      type: object
-    MetaPaginated:
-      properties:
-        totalRecords:
-          description: The total number of records in the full set. See [pagination](#pagination).
-          type: integer
-          x-cds-type: NaturalNumber
-        totalPages:
-          description: The total number of pages in the full set. See [pagination](#pagination).
-          type: integer
-          x-cds-type: NaturalNumber
-      required:
-      - totalPages
-      - totalRecords
-      type: object
-    ErrorV2_meta:
-      description: Additional data for customised error codes.
-      properties:
-        urn:
-          description: The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.
-          type: string
-      type: object
-      x-conditional:
-      - urn
-    BankingAccountId:
-      description: A unique identifier for a Banking account, generated according to [CDR ID Permanence](#id-permanence) requirements.
-      type: string
-      x-cds-type: ASCIIString
-    ResponseBankingAccountsBalanceById:
-      properties:
-        data:
-          $ref: '#/components/schemas/BankingBalance'
-        links:
-          $ref: '#/components/schemas/Links'
-        meta:
-          $ref: '#/components/schemas/Meta'
-      required:
-      - data
-      - links
       type: object
     BankingProductCategoryV2:
       description: The category to which a product or account belongs. See [here](#product-categories) for more details.
@@ -536,8 +486,15 @@ components:
       - TRANS_AND_SAVINGS_ACCOUNTS
       - TRAVEL_CARDS
       type: string
-    Meta:
+    ErrorV2_meta:
+      description: Additional data for customised error codes.
+      properties:
+        urn:
+          description: The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.
+          type: string
       type: object
+      x-conditional:
+      - urn
     BankingBalance:
       properties:
         accountId:
@@ -577,6 +534,16 @@ components:
       - availableBalance
       - currentBalance
       type: object
+    ResponseBankingAccountsBalanceList_data:
+      properties:
+        balances:
+          description: The list of balances returned.
+          items:
+            $ref: '#/components/schemas/BankingBalance'
+          type: array
+      required:
+      - balances
+      type: object
     Links:
       properties:
         self:
@@ -585,6 +552,16 @@ components:
           x-cds-type: URIString
       required:
       - self
+      type: object
+    RequestAccountIdListV1_data:
+      properties:
+        accountIds:
+          description: Array of _accountId_ values to obtain data for.
+          items:
+            $ref: '#/components/schemas/BankingAccountId'
+          type: array
+      required:
+      - accountIds
       type: object
     RequestAccountIdListV1:
       properties:
@@ -595,36 +572,59 @@ components:
       required:
       - data
       type: object
-    LinksPaginated:
+    BankingAccountId:
+      description: A unique identifier for a Banking account, generated according to [CDR ID Permanence](#id-permanence) requirements.
+      type: string
+      x-cds-type: ASCIIString
+    ResponseBankingAccountsBalanceById:
       properties:
-        self:
-          description: Fully qualified link that generated the current response document.
-          type: string
-          x-cds-type: URIString
-        first:
-          description: URI to the first page of this set. Mandatory if this response is not the first page.
-          type: string
-          x-cds-type: URIString
-        prev:
-          description: URI to the previous page of this set. Mandatory if this response is not the first page.
-          type: string
-          x-cds-type: URIString
-        next:
-          description: URI to the next page of this set. Mandatory if this response is not the last page.
-          type: string
-          x-cds-type: URIString
-        last:
-          description: URI to the last page of this set. Mandatory if this response is not the last page.
-          type: string
-          x-cds-type: URIString
+        data:
+          $ref: '#/components/schemas/BankingBalance'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
       required:
-      - self
+      - data
+      - links
       type: object
-      x-conditional:
-      - prev
-      - next
-      - first
-      - last
+    ResponseErrorListV2:
+      properties:
+        errors:
+          description: List of errors.
+          items:
+            $ref: '#/components/schemas/ErrorV2'
+          type: array
+      required:
+      - errors
+      type: object
+    MetaPaginated:
+      properties:
+        totalRecords:
+          description: The total number of records in the full set. See [pagination](#pagination).
+          type: integer
+          x-cds-type: NaturalNumber
+        totalPages:
+          description: The total number of pages in the full set. See [pagination](#pagination).
+          type: integer
+          x-cds-type: NaturalNumber
+      required:
+      - totalPages
+      - totalRecords
+      type: object
+    ResponseBankingAccountsBalanceList:
+      properties:
+        data:
+          $ref: '#/components/schemas/ResponseBankingAccountsBalanceList_data'
+        links:
+          $ref: '#/components/schemas/LinksPaginated'
+        meta:
+          $ref: '#/components/schemas/MetaPaginated'
+      required:
+      - data
+      - links
+      - meta
+      type: object
   headers:
     XV:
       description: The [payload version](#response-headers) that the endpoint has responded with.
