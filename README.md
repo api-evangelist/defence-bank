@@ -1,4 +1,4 @@
-# Defence Bank (defence-bank)
+# Defence Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,59 +64,132 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Defence Bank Limited is an Australian customer-owned (mutual) bank established in 1975 and headquartered in Melbourne, serving current and former Australian Defence Force personnel, Department of Defence employees, and their families as well as the broader community. As an APRA-regulated Authorised Deposit-taking Institution (ADI), it returns value to members rather than external shareholders. Under Australia's Consumer Data Right (CDR / Open Banking), Defence Bank is a data holder exposing a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards.
+Defence Bank Limited is an Australian customer-owned (mutual) bank established in 1975 and headquartered in Melbourne, serving current and former Australian Defence Force personnel, Department of Defence employees, and their families as well as the broader community. As an APRA-regulated Authorised Deposit-taking Institution (ADI), it exists to return value to members rather than external shareholders. Under Australia's Consumer Data Right (CDR / Open Banking), Defence Bank operates as a data holder and exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards; deeper consumer-data sharing requires an accredited data recipient and the OAuth2/OIDC FAPI CDR authorization model.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/defence-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/defence-bank/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Banking · Australia · Mutual Bank · Product Reference Data
 
-## Tags
+## Defence Bank on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Banking
-- Australia
-- Mutual Bank
-- Product Reference Data
+Everything profiled for Defence Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/defence-bank/](https://apis.io/providers/defence-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Defence Bank Banking Account Balances API](https://apis.io/apis/defence-bank/defence-bank-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Defence Bank Banking Account Direct Debits API](https://apis.io/apis/defence-bank/defence-bank-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Defence Bank Banking Account Scheduled Payments API](https://apis.io/apis/defence-bank/defence-bank-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Defence Bank Banking Account Transactions API](https://apis.io/apis/defence-bank/defence-bank-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Defence Bank Banking Accounts API](https://apis.io/apis/defence-bank/defence-bank-banking-accounts-api/) — Banking Account endpoints
+- [Defence Bank Banking Payees API](https://apis.io/apis/defence-bank/defence-bank-banking-payees-api/) — Banking Payee endpoints
+- [Defence Bank Banking Products API](https://apis.io/apis/defence-bank/defence-bank-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Defence Bank CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Public, unauthenticated Consumer Data Right (CDR) Product Reference Data API exposing Defence Bank's retail and business banking products under the standard Consumer Data Standards (CDS) path `/cds-au/v1/banking/products` and `/cds-au/v1/banking/products/{productId}`. Confirmed live at HTTP 200 with `x-v: 4` returning a `data.products` array (52 products across transaction accounts, savings accounts, term deposits, credit cards, home loans, offset accounts, overdrafts, and personal loans).
+#### MCP servers (1)
 
-- **Human URL:** [https://www.defencebank.com.au/tools-and-advice/open-banking/](https://www.defencebank.com.au/tools-and-advice/open-banking/)
-- **Base URL:** `https://product.defencebank.com.au/cds-au/v1`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [defence-bank-products](https://apis.io/servers/defence-bank/defence-bank-products/)
 
-- CDR
-- Open Banking
-- Product Reference Data
-- Banking Products
-- Australia
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://www.defencebank.com.au/tools-and-advice/open-banking/)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#introduction)
-- [OpenAPI](openapi/defence-bank-cds-banking-products-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Defence Bank Agentic Access](https://apis.io/agentic-access/defence-bank/defence-bank-agentic-access/)
 
-## Common Properties
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/defence-bank/open-defence-bank-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/defence-bank/open-defence-bank-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/defence-bank/open-defence-bank-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/defence-bank/open-defence-bank-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/defence-bank/open-defence-bank-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/defence-bank/open-defence-bank-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/defence-bank/open-defence-bank-banking-products-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Defence Bank Cds Banking Products Overlay](https://apis.io/overlays/defence-bank/defence-bank-cds-banking-products-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Defence Bank Authentication](https://apis.io/security/defence-bank/defence-bank-authentication/)
+- [Defence Bank Domain Security](https://apis.io/security/defence-bank/defence-bank-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Defence Bank Scopes](https://apis.io/scopes/defence-bank/defence-bank-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.defencebank.com.au/)
 - [Documentation](https://www.defencebank.com.au/tools-and-advice/open-banking/)
-- [Blog](https://www.defencebank.com.au/intel)
-- [Privacy Policy](https://www.defencebank.com.au/tools-and-advice/legal-and-compliance/privacy/)
+- [Getting started](https://www.defencebank.com.au/tools-and-advice/open-banking/)
 - [Support](https://www.defencebank.com.au/contact)
-- [LinkedIn](https://www.linkedin.com/company/defencebank)
+- [Blog](https://www.defencebank.com.au/intel)
+- [Compliance](https://www.defencebank.com.au/tools-and-advice/open-banking/)
+- [Privacy policy](https://www.defencebank.com.au/tools-and-advice/legal-and-compliance/privacy/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 44.7 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 49.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 38.6** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/defence-bank/](https://apis.io/providers/defence-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Defence Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/defence-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
